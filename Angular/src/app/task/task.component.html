@@ -1,0 +1,63 @@
+<div class="container-fluid mt-2 p-5">
+   <div class="row">
+      <div class="col-4 jumbotron" style="border-radius: 10px;">
+        <form #f="ngForm" name="form" (ngSubmit)="onSubmit(f)">
+            <div class="form-group">
+                <label>Description</label>
+                <input type="text"  name="Description" [(ngModel)]="task.description" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Date</label>
+                <input type="date" name="date" [(ngModel)]="task.date" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Status</label>
+                <input type="text" name="Description" [(ngModel)]="task.status" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success mt-2">{{isEdit?'Update':'Create'}}</button>
+        </form>
+      </div>
+      <div class="col-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Date</th>
+                         <th>Status</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of usersList">
+                        <td>{{user.description}}</td>
+                        <td>{{user.date}}</td>
+                        <td>{{user.status}}</td>
+                        <td style="cursor:pointer; "><i (click)="edit(user)" class="fas fa-edit" style="font-size:24px;"></i></td>
+                        <td style="cursor:pointer;"><i (click)="delete(user)" class="fas fa-trash-alt" style="font-size:24px;"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+      </div>
+   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+<div class="container mt-2">
+    <h2>Register Here</h2>
+<form [formGroup]="registerForm" #myform='ngForm' (ngSubmit)="Onsubmit()">
+    <label class="form-label"><strong>Name:</strong></label>
+    <div>
+        <input type="text" class="form-control" placeholder="Enter Name" name="Name"
+        formControlName="name" />
+    </div>
+    <div class="form-text text-danger" *ngIf="registerForm.get('name')?.invalid
+    &&(registerForm.get('name')?.touched||registerForm.get('name')?.dirty)">
+       <small *ngIf="registerForm.get('name')?.hasError('required')">
+        Name is required
+       </small> 
+    </div>
+    <div class="form-text text-danger" *ngIf="registerForm.get('name')?.invalid
+        &&(registerForm.get('name')?.touched||registerForm.get('name')?.dirty)">
+        <small *ngIf="registerForm.get('name')?.hasError('minlength')">
+            Name is too short
+        </small>
+    </div>
+    
+    <label class="form-label"><strong>Age</strong></label>
+    <div>
+        <input type="number" class="form-control" placeholder="Enter Age" name="age"   formControlName="age" />
+    </div>
+    <div class="form-text text-danger" *ngIf="registerForm.get('age')?.invalid
+        &&(registerForm.get('age')?.touched||registerForm.get('age')?.dirty)">
+        <small *ngIf="registerForm.get('age')?.hasError('required')">
+            Age is required
+        </small>
+    </div>
+
+       <!--  <div class="form-text text-danger" *ngIf="Age.errors?.['required']&& (Age.touched||Age.dirty)">
+            Age is required
+        </div> -->
+    <label class="form-label"><strong>Email</strong></label>
+    <div>
+        <input type="text" class="form-control" placeholder="Enter EmailID" name="email" email  formControlName="email" />
+    </div>
+    <div class="form-text text-danger" *ngIf="registerForm.get('email')?.invalid
+        &&(registerForm.get('email')?.touched||registerForm.get('email')?.dirty)">
+        <small *ngIf="registerForm.get('email')?.hasError('required')">
+            Email is required
+        </small>
+    </div>
+        <!-- <div class="form-text text-danger" *ngIf="Email.errors?.['required']&& (Email.touched||Email.dirty)">
+            Email is required
+        </div> -->
+    <label class="form-label"><strong>Password</strong> </label>
+    <div>
+        <input type="password" class="form-control" id="pass" placeholder="Enter Password" name="Password"
+     formControlName="password" />
+    </div>
+    <div class="form-text text-danger" *ngIf="registerForm.get('password')?.invalid
+        &&(registerForm.get('password')?.touched||registerForm.get('password')?.dirty)">
+        <small *ngIf="registerForm.get('password')?.hasError('required')">
+            Password is required
+        </small>
+    </div>
+    <div class="form-text text-danger" *ngIf="registerForm.get('password')?.invalid
+            &&(registerForm.get('password')?.touched||registerForm.get('password')?.dirty)">
+        <small *ngIf="registerForm.get('password')?.hasError('minlength')">
+            password must have 8 characters
+        </small>
+    </div>
+    <div class="form-text text-danger" *ngIf="registerForm.get('password')?.invalid
+                &&(registerForm.get('password')?.touched||registerForm.get('password')?.dirty)">
+        <small *ngIf="registerForm.get('password')?.hasError('maxlength')">
+            password allow 15 characters only
+        </small>
+    </div>
+    <!-- <div class="form-text text-danger" *ngIf="Password.errors?.['required']&& (Password.touched||Password.dirty)">
+        Password is required
+    </div> -->
+    <div>
+        <button type="submit" class="btn btn-success mt-2" [disabled]="registerForm.invalid" >Submit</button>
+    </div>
+    <small><a routerLink="../login"></a></small>
+</form>
+</div>
